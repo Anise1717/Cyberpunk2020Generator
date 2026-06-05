@@ -1,9 +1,4 @@
-use crate::{
-    cyberware::Cyberware,
-    gear::{self, Modifier},
-    graphics::messages::{Message, StatEnum},
-    stats, weapons,
-};
+use crate::{graphics::messages, skills::Modifier, stats, weapons};
 
 use std::collections::HashMap;
 
