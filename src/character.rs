@@ -1,4 +1,7 @@
-use crate::{graphics::messages, skills::Modifier, stats, weapons};
+use crate::{
+    graphics::messages::Message, graphics::messages::StatEnum, skills::Modifier, stats::Stats,
+    weapons,
+};
 
 use std::collections::HashMap;
 
@@ -28,7 +31,7 @@ pub struct Character {
     handle: String,
     role: Option<Role>,
     character_points: isize,
-    stats: stats::Stats,
+    stats: Stats,
 
     pub special_abilities: HashMap<String, Vec<Modifier>>,
     attraction_skills: HashMap<String, Vec<Modifier>>,
@@ -38,20 +41,17 @@ pub struct Character {
     intelligence_skills: HashMap<String, Vec<Modifier>>,
     reflex_skills: HashMap<String, Vec<Modifier>>,
     tech_skill: HashMap<String, Vec<Modifier>>,
-
-    gear: Vec<gear::Gear>,
-    weapons: Vec<weapons::Weapon>,
 }
 
 impl Character {
-    fn update(&mut self, message: Message) {
+    pub fn update(&mut self, message: Message) {
         match message {
             Message::StatIncreased(stat) => {
-                self.stats.increase(stat);
+                *self.stats.get_mut(stat) += 1;
             }
 
             Message::StatDecreased(stat) => {
-                self.stats.decrease(stat);
+                *self.stats.get_mut(stat) -= 1;
             }
 
             _ => {}
@@ -63,7 +63,7 @@ impl Character {
             handle: name,
             role: None,
             character_points: points,
-            stats: stats::new(),
+            stats: Stats::new(points),
 
             special_abilities: ability_map(&[
                 "Authority",
@@ -80,7 +80,7 @@ impl Character {
 
             attraction_skills: skill_map(
                 &["Personal Grooming", "Wardrobe & Style"],
-                StatEnum::Attr,
+                StatEnum::Attractiveness,
             ),
 
             body_skills: skill_map(&["Endurance", "Strength Feat", "Swimming"], StatEnum::Body),
@@ -106,7 +106,7 @@ impl Character {
                     "Persuasion & Fast Talk",
                     "Perform",
                 ],
-                StatEnum::Emp,
+                StatEnum::Empathy,
             ),
 
             intelligence_skills: skill_map(
@@ -135,7 +135,7 @@ impl Character {
                     "Wilderness Survival",
                     "Zoology",
                 ],
-                StatEnum::Int,
+                StatEnum::Intelligence,
             ),
 
             reflex_skills: skill_map(
@@ -160,7 +160,7 @@ impl Character {
                     "Stealth",
                     "Submachinegun",
                 ],
-                StatEnum::Ref,
+                StatEnum::Reflex,
             ),
 
             tech_skill: skill_map(
@@ -188,9 +188,8 @@ impl Character {
                 ],
                 StatEnum::Tech,
             ),
-
-            gear: vec![],
-            weapons: vec![],
+            // gear: vec![],
+            // weapons: vec![],
         }
     }
 }

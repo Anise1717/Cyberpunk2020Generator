@@ -1,7 +1,16 @@
+use serde::{Deserialize, Serialize};
+use strum_macros::Display;
+#[derive(Debug, Clone)]
 pub enum Message {
-    SetSkill(isize, StatEnum),
+    SetSkill(String, StatEnum, isize),
     SetStat(isize, StatEnum),
+    StatIncreased(StatEnum),
+    StatDecreased(StatEnum),
+    DecreaseSkill(String, StatEnum),
+    IncreaseSkill(String, StatEnum),
 }
+
+#[derive(Debug, Clone, Serialize, Deserialize, Display, Copy)]
 pub enum StatEnum {
     Body,
     Luck,
@@ -11,4 +20,5 @@ pub enum StatEnum {
     Tech,
     Cool,
     Attractiveness,
+    Empathy,
 }
