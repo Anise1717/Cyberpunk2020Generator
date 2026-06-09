@@ -1,0 +1,4 @@
+in Order:
+change seperate skill lists to one big hash map
+intialize new character from JSON file
+JSON loading
