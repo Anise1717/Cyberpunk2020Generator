@@ -6,8 +6,8 @@ pub enum Message {
     SetStat(isize, StatEnum),
     StatIncreased(StatEnum),
     StatDecreased(StatEnum),
-    DecreaseSkill(String, StatEnum),
-    IncreaseSkill(String, StatEnum),
+    SkillDecreased(String, StatEnum),
+    SkillIncreased(String, StatEnum),
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Display, Copy)]

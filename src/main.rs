@@ -8,6 +8,12 @@ struct App {
 }
 
 impl App {
+    fn new() -> Self {
+        Self {
+            character: Character::new("Jane Doe".to_string(), 70),
+        }
+    }
+
     fn update(&mut self, message: Message) {
         self.character.update(message);
     }
@@ -15,7 +21,7 @@ impl App {
     fn view(&self) -> Element<Message> {
         let skills: Column<Message> =
             self.character
-                .special_abilities
+                .intelligence_skills
                 .iter()
                 .fold(column![], |col, (name, modifiers)| {
                     let total: isize = modifiers.iter().map(|m| m.value()).sum();
@@ -23,8 +29,14 @@ impl App {
                         row![
                             text(name).width(200),
                             text(total.to_string()).width(50),
-                            button("+").on_press(Message::SkillIncreased(name.clone())),
-                            button("-").on_press(Message::SkillDecreased(name.clone())),
+                            button("+").on_press(Message::SkillIncreased(
+                                name.clone(),
+                                messages::StatEnum::Intelligence
+                            )),
+                            button("-").on_press(Message::SkillDecreased(
+                                name.clone(),
+                                messages::StatEnum::Intelligence
+                            )),
                         ]
                         .spacing(10),
                     )
@@ -41,6 +53,8 @@ impl App {
     }
 }
 
-fn main() {
-    iced::run("Character Gen", App::update, App::view);
+fn main() -> iced::Result {
+    iced::application(App::new, App::update, App::view)
+        .title("Character Gen")
+        .run()
 }

@@ -1,7 +1,7 @@
 mod armor;
-mod character;
+pub mod character;
 mod gear;
-mod graphics;
+pub mod graphics;
 mod skills;
 mod stats;
 mod traits;

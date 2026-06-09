@@ -1,7 +1,7 @@
 use crate::graphics::messages::StatEnum;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, Default)]
 pub struct Stats {
     below_two: bool,
     unused_points: isize,

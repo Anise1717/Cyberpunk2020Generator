@@ -1,9 +1,11 @@
+use iced::futures::stream::TrySkipWhile;
+
 use crate::{
     graphics::messages::Message, graphics::messages::StatEnum, skills::Modifier, stats::Stats,
     weapons,
 };
 
-use std::collections::HashMap;
+use std::{collections::HashMap, iter::Skip};
 
 fn skill_map(skills: &[&str], governing_stat: StatEnum) -> HashMap<String, Vec<Modifier>> {
     skills
@@ -26,11 +28,12 @@ fn ability_map(abilities: &[&str]) -> HashMap<String, Vec<Modifier>> {
         .map(|ability| (ability.to_string(), vec![Modifier::skill_points()]))
         .collect()
 }
-
+// make all skills one hashmap and load new characters from json template
+#[derive(Default)]
 pub struct Character {
     handle: String,
     role: Option<Role>,
-    character_points: isize,
+    pub character_points: isize,
     stats: Stats,
 
     pub special_abilities: HashMap<String, Vec<Modifier>>,
@@ -38,7 +41,7 @@ pub struct Character {
     body_skills: HashMap<String, Vec<Modifier>>,
     cool_skills: HashMap<String, Vec<Modifier>>,
     empathy_skills: HashMap<String, Vec<Modifier>>,
-    intelligence_skills: HashMap<String, Vec<Modifier>>,
+    pub intelligence_skills: HashMap<String, Vec<Modifier>>,
     reflex_skills: HashMap<String, Vec<Modifier>>,
     tech_skill: HashMap<String, Vec<Modifier>>,
 }
@@ -53,8 +56,48 @@ impl Character {
             Message::StatDecreased(stat) => {
                 *self.stats.get_mut(stat) -= 1;
             }
+            Message::SkillIncreased(skill, stat) => {
+                let temp = self.skill_helper(stat).get_mut(&skill);
+                match temp {
+                    Some(skill) => {
+                        skill
+                            .iter_mut()
+                            .filter(|x| x.origin == "Skill points")
+                            .for_each(|x| x.modifier += 1);
+                    }
+                    _ => {
+                        eprintln!("fuck");
+                    }
+                }
+            }
+            Message::SkillDecreased(skill, stat) => {
+                let temp = self.skill_helper(stat).get_mut(&skill);
+                match temp {
+                    Some(skill) => {
+                        skill
+                            .iter_mut()
+                            .filter(|x| x.origin == "Skill points")
+                            .for_each(|x| x.modifier -= 1);
+                    }
+                    _ => {
+                        eprintln!("fuck");
+                    }
+                }
+            }
 
             _ => {}
+        }
+    }
+    fn skill_helper(&mut self, stat: StatEnum) -> &mut HashMap<String, Vec<Modifier>> {
+        match stat {
+            StatEnum::Body => &mut self.body_skills,
+            StatEnum::Tech => &mut self.tech_skill,
+            StatEnum::Intelligence => &mut self.intelligence_skills,
+            StatEnum::Reflex => &mut self.reflex_skills,
+            StatEnum::Cool => &mut self.cool_skills,
+            StatEnum::Attractiveness => &mut self.attraction_skills,
+            StatEnum::Empathy => &mut self.empathy_skills,
+            _ => &mut self.special_abilities,
         }
     }
 
