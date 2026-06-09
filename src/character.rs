@@ -1,7 +1,9 @@
-use iced::futures::stream::TrySkipWhile;
+use iced::{application::IntoBoot, futures::stream::TrySkipWhile};
 
 use crate::{
-    graphics::messages::Message, graphics::messages::StatEnum, skills::Modifier, stats::Stats,
+    graphics::messages::{Message, StatEnum},
+    skills::{self, Modifier},
+    stats::Stats,
     weapons,
 };
 
@@ -85,6 +87,22 @@ impl Character {
                 }
             }
 
+            Message::SetSkill(skill, stat, value) => {
+                if let Ok(parsed) = value.parse::<isize>() {
+                    let temp = self.skill_helper(stat).get_mut(&skill);
+                    match temp {
+                        Some(skill) => {
+                            skill
+                                .iter_mut()
+                                .filter(|x| x.origin == "Skill points")
+                                .for_each(|x| x.modifier = parsed);
+                        }
+                        _ => {
+                            eprintln!("fuck");
+                        }
+                    }
+                }
+            }
             _ => {}
         }
     }

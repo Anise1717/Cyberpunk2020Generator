@@ -1,6 +1,6 @@
 use charecter_gen_2020::character::Character;
 use charecter_gen_2020::graphics::messages::{self, Message};
-use iced::widget::{Column, button, column, row, text};
+use iced::widget::{Column, button, column, row, text, text_input};
 use iced::{self, Color, Element};
 
 struct App {
@@ -28,7 +28,13 @@ impl App {
                     col.push(
                         row![
                             text(name).width(200),
-                            text(total.to_string()).width(50),
+                            text_input(&total.to_string(), &total.to_string())
+                                .on_input(|value| Message::SetSkill(
+                                    name.to_string(),
+                                    messages::StatEnum::Intelligence,
+                                    value.to_ascii_lowercase()
+                                ))
+                                .width(50),
                             button("+").on_press(Message::SkillIncreased(
                                 name.clone(),
                                 messages::StatEnum::Intelligence

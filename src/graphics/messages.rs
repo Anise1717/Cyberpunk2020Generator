@@ -2,7 +2,8 @@ use serde::{Deserialize, Serialize};
 use strum_macros::Display;
 #[derive(Debug, Clone)]
 pub enum Message {
-    SetSkill(String, StatEnum, isize),
+    //skill,stat,value
+    SetSkill(String, StatEnum, String),
     SetStat(isize, StatEnum),
     StatIncreased(StatEnum),
     StatDecreased(StatEnum),
