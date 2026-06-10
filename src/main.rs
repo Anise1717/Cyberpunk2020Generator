@@ -1,7 +1,7 @@
 use charecter_gen_2020::character::Character;
-use charecter_gen_2020::graphics::messages::{self, Message};
+use charecter_gen_2020::graphics::messages::{self, Message, StatEnum};
 use iced::widget::{Column, button, column, row, text, text_input};
-use iced::{self, Color, Element};
+use iced::{self, Element};
 
 struct App {
     character: Character,
@@ -19,34 +19,48 @@ impl App {
     }
 
     fn view(&self) -> Element<Message> {
-        let skills: Column<Message> =
-            self.character
-                .intelligence_skills
-                .iter()
-                .fold(column![], |col, (name, modifiers)| {
+        let skills: Column<Message> = self
+            .character
+            .skills
+            .get(&StatEnum::Intelligence)
+            .map(|skill_map| {
+                skill_map.iter().fold(column![], |col, (name, modifiers)| {
                     let total: isize = modifiers.iter().map(|m| m.value()).sum();
+                    let total_str = total.to_string();
                     col.push(
                         row![
                             text(name).width(200),
-                            text_input(&total.to_string(), &total.to_string())
-                                .on_input(|value| Message::SetSkill(
-                                    name.to_string(),
-                                    messages::StatEnum::Intelligence,
-                                    value.to_ascii_lowercase()
-                                ))
+                            text_input(&total_str, &total_str)
+                                .on_input(|value| {
+                                    if value.chars().all(|c| c.is_numeric()) {
+                                        Message::SetSkill(
+                                            name.to_string(),
+                                            StatEnum::Intelligence,
+                                            value,
+                                        )
+                                    } else {
+                                        Message::SetSkill(
+                                            name.to_string(),
+                                            StatEnum::Intelligence,
+                                            value,
+                                        )
+                                    }
+                                })
                                 .width(50),
                             button("+").on_press(Message::SkillIncreased(
                                 name.clone(),
-                                messages::StatEnum::Intelligence
+                                StatEnum::Intelligence,
                             )),
                             button("-").on_press(Message::SkillDecreased(
                                 name.clone(),
-                                messages::StatEnum::Intelligence
+                                StatEnum::Intelligence,
                             )),
                         ]
                         .spacing(10),
                     )
-                });
+                })
+            })
+            .unwrap_or_else(|| column![]);
 
         column![
             text(format!(

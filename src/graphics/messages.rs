@@ -11,7 +11,7 @@ pub enum Message {
     SkillIncreased(String, StatEnum),
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize, Display, Copy)]
+#[derive(Debug, Clone, Serialize, Deserialize, Display, Copy, PartialEq, Eq, Hash)]
 pub enum StatEnum {
     Body,
     Luck,

@@ -1,5 +1,3 @@
-use iced::{application::IntoBoot, futures::stream::TrySkipWhile};
-
 use crate::{
     graphics::messages::{Message, StatEnum},
     skills::{self, Modifier},
@@ -7,7 +5,7 @@ use crate::{
     weapons,
 };
 
-use std::{collections::HashMap, iter::Skip};
+use std::collections::HashMap;
 
 fn skill_map(skills: &[&str], governing_stat: StatEnum) -> HashMap<String, Vec<Modifier>> {
     skills
@@ -30,22 +28,14 @@ fn ability_map(abilities: &[&str]) -> HashMap<String, Vec<Modifier>> {
         .map(|ability| (ability.to_string(), vec![Modifier::skill_points()]))
         .collect()
 }
-// make all skills one hashmap and load new characters from json template
+
 #[derive(Default)]
 pub struct Character {
     handle: String,
     role: Option<Role>,
     pub character_points: isize,
     stats: Stats,
-
-    pub special_abilities: HashMap<String, Vec<Modifier>>,
-    attraction_skills: HashMap<String, Vec<Modifier>>,
-    body_skills: HashMap<String, Vec<Modifier>>,
-    cool_skills: HashMap<String, Vec<Modifier>>,
-    empathy_skills: HashMap<String, Vec<Modifier>>,
-    pub intelligence_skills: HashMap<String, Vec<Modifier>>,
-    reflex_skills: HashMap<String, Vec<Modifier>>,
-    tech_skill: HashMap<String, Vec<Modifier>>,
+    pub skills: HashMap<StatEnum, HashMap<String, Vec<Modifier>>>,
 }
 
 impl Character {
@@ -54,79 +44,63 @@ impl Character {
             Message::StatIncreased(stat) => {
                 *self.stats.get_mut(stat) += 1;
             }
-
             Message::StatDecreased(stat) => {
                 *self.stats.get_mut(stat) -= 1;
             }
             Message::SkillIncreased(skill, stat) => {
-                let temp = self.skill_helper(stat).get_mut(&skill);
-                match temp {
-                    Some(skill) => {
-                        skill
+                if let Some(stat_map) = self.skills.get_mut(&stat) {
+                    if let Some(modifiers) = stat_map.get_mut(&skill) {
+                        modifiers
                             .iter_mut()
                             .filter(|x| x.origin == "Skill points")
                             .for_each(|x| x.modifier += 1);
+                    } else {
+                        eprintln!("skill not found: {}", skill);
                     }
-                    _ => {
-                        eprintln!("fuck");
-                    }
+                } else {
+                    eprintln!("stat not found");
                 }
             }
             Message::SkillDecreased(skill, stat) => {
-                let temp = self.skill_helper(stat).get_mut(&skill);
-                match temp {
-                    Some(skill) => {
-                        skill
+                if let Some(stat_map) = self.skills.get_mut(&stat) {
+                    if let Some(modifiers) = stat_map.get_mut(&skill) {
+                        modifiers
                             .iter_mut()
                             .filter(|x| x.origin == "Skill points")
                             .for_each(|x| x.modifier -= 1);
+                    } else {
+                        eprintln!("skill not found: {}", skill);
                     }
-                    _ => {
-                        eprintln!("fuck");
-                    }
+                } else {
+                    eprintln!("stat not found");
                 }
             }
-
             Message::SetSkill(skill, stat, value) => {
                 if let Ok(parsed) = value.parse::<isize>() {
-                    let temp = self.skill_helper(stat).get_mut(&skill);
-                    match temp {
-                        Some(skill) => {
-                            skill
+                    if let Some(stat_map) = self.skills.get_mut(&stat) {
+                        if let Some(modifiers) = stat_map.get_mut(&skill) {
+                            modifiers
                                 .iter_mut()
                                 .filter(|x| x.origin == "Skill points")
                                 .for_each(|x| x.modifier = parsed);
+                        } else {
+                            eprintln!("skill not found: {}", skill);
                         }
-                        _ => {
-                            eprintln!("fuck");
-                        }
+                    } else {
+                        eprintln!("stat not found");
                     }
                 }
             }
             _ => {}
         }
     }
-    fn skill_helper(&mut self, stat: StatEnum) -> &mut HashMap<String, Vec<Modifier>> {
-        match stat {
-            StatEnum::Body => &mut self.body_skills,
-            StatEnum::Tech => &mut self.tech_skill,
-            StatEnum::Intelligence => &mut self.intelligence_skills,
-            StatEnum::Reflex => &mut self.reflex_skills,
-            StatEnum::Cool => &mut self.cool_skills,
-            StatEnum::Attractiveness => &mut self.attraction_skills,
-            StatEnum::Empathy => &mut self.empathy_skills,
-            _ => &mut self.special_abilities,
-        }
-    }
 
     pub fn new(name: String, points: isize) -> Self {
-        Self {
-            handle: name,
-            role: None,
-            character_points: points,
-            stats: Stats::new(points),
+        let mut skills = HashMap::new();
 
-            special_abilities: ability_map(&[
+        skills.insert(
+            StatEnum::Luck,
+            ability_map(&[
                 "Authority",
                 "Charismatic Leadership",
                 "Combat Sense",
@@ -138,15 +112,24 @@ impl Character {
                 "Resources",
                 "Streetdeal",
             ]),
+        );
 
-            attraction_skills: skill_map(
+        skills.insert(
+            StatEnum::Attractiveness,
+            skill_map(
                 &["Personal Grooming", "Wardrobe & Style"],
                 StatEnum::Attractiveness,
             ),
+        );
 
-            body_skills: skill_map(&["Endurance", "Strength Feat", "Swimming"], StatEnum::Body),
+        skills.insert(
+            StatEnum::Body,
+            skill_map(&["Endurance", "Strength Feat", "Swimming"], StatEnum::Body),
+        );
 
-            cool_skills: skill_map(
+        skills.insert(
+            StatEnum::Cool,
+            skill_map(
                 &[
                     "Interrogation",
                     "Intimidate",
@@ -156,8 +139,11 @@ impl Character {
                 ],
                 StatEnum::Cool,
             ),
+        );
 
-            empathy_skills: skill_map(
+        skills.insert(
+            StatEnum::Empathy,
+            skill_map(
                 &[
                     "Human Perception",
                     "Interview",
@@ -169,8 +155,11 @@ impl Character {
                 ],
                 StatEnum::Empathy,
             ),
+        );
 
-            intelligence_skills: skill_map(
+        skills.insert(
+            StatEnum::Intelligence,
+            skill_map(
                 &[
                     "Accounting",
                     "Anthropology",
@@ -198,8 +187,11 @@ impl Character {
                 ],
                 StatEnum::Intelligence,
             ),
+        );
 
-            reflex_skills: skill_map(
+        skills.insert(
+            StatEnum::Reflex,
+            skill_map(
                 &[
                     "Archery",
                     "Athletics",
@@ -223,8 +215,11 @@ impl Character {
                 ],
                 StatEnum::Reflex,
             ),
+        );
 
-            tech_skill: skill_map(
+        skills.insert(
+            StatEnum::Tech,
+            skill_map(
                 &[
                     "Aero Tech",
                     "AV Tech",
@@ -249,8 +244,14 @@ impl Character {
                 ],
                 StatEnum::Tech,
             ),
-            // gear: vec![],
-            // weapons: vec![],
+        );
+
+        Self {
+            handle: name,
+            role: None,
+            character_points: points,
+            stats: Stats::new(points),
+            skills,
         }
     }
 }
