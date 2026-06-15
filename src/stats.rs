@@ -44,6 +44,8 @@ impl Stats {
             StatEnum::Movement => &mut self.movement_allowance,
             StatEnum::Body => &mut self.body,
             StatEnum::Empathy => &mut self.empathy,
+            //make this return error
+            _ => &mut self.intelligence,
         }
     }
 }

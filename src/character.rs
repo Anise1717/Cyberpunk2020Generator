@@ -1,8 +1,11 @@
+use serde::{Deserialize, Serialize};
+
 use crate::{
+    gear,
     graphics::messages::{Message, StatEnum},
     skills::{self, Modifier},
     stats::Stats,
-    weapons,
+    weapons::Weapon,
 };
 
 use std::collections::HashMap;
@@ -29,13 +32,15 @@ fn ability_map(abilities: &[&str]) -> HashMap<String, Vec<Modifier>> {
         .collect()
 }
 
-#[derive(Default)]
+#[derive(Default, Serialize, Deserialize)]
 pub struct Character {
     handle: String,
     role: Option<Role>,
     pub character_points: isize,
     stats: Stats,
     pub skills: HashMap<StatEnum, HashMap<String, Vec<Modifier>>>,
+    pub gear: Vec<gear::Gear>,
+    pub weapons: Vec<Weapon>,
 }
 
 impl Character {
@@ -99,7 +104,7 @@ impl Character {
         let mut skills = HashMap::new();
 
         skills.insert(
-            StatEnum::Luck,
+            StatEnum::SpecialAbility,
             ability_map(&[
                 "Authority",
                 "Charismatic Leadership",
@@ -252,10 +257,12 @@ impl Character {
             character_points: points,
             stats: Stats::new(points),
             skills,
+            gear: vec![],
+            weapons: vec![],
         }
     }
 }
-
+#[derive(Serialize, Deserialize)]
 enum Role {
     Solo,
     Rocker,

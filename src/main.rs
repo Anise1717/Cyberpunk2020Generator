@@ -1,7 +1,10 @@
+use std::fs;
+
 use charecter_gen_2020::character::Character;
 use charecter_gen_2020::graphics::messages::{self, Message, StatEnum};
-use iced::widget::{Column, button, column, row, text, text_input};
+use iced::widget::{Column, Container, button, column, row, text, text_input};
 use iced::{self, Element};
+use serde_json::value::Serializer;
 
 struct App {
     character: Character,
@@ -10,12 +13,15 @@ struct App {
 impl App {
     fn new() -> Self {
         Self {
-            character: Character::new("Jane Doe".to_string(), 70),
+            character: Character::new("Jane Doe".to_string(), 0),
         }
     }
 
     fn update(&mut self, message: Message) {
-        self.character.update(message);
+        match message {
+            Message::SaveJson => saveFile(&self.character),
+            _ => self.character.update(message),
+        }
     }
 
     fn view(&self) -> Element<Message> {
@@ -68,6 +74,7 @@ impl App {
                 self.character.character_points
             )),
             skills,
+            button("serialize").on_press(Message::SaveJson),
         ]
         .into()
     }
@@ -77,4 +84,8 @@ fn main() -> iced::Result {
     iced::application(App::new, App::update, App::view)
         .title("Character Gen")
         .run()
+}
+fn saveFile(output: &Character) {
+    let json = serde_json::to_string_pretty(&output).unwrap();
+    fs::write("new_character.json", json).unwrap();
 }

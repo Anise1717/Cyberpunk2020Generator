@@ -9,6 +9,7 @@ pub enum Message {
     StatDecreased(StatEnum),
     SkillDecreased(String, StatEnum),
     SkillIncreased(String, StatEnum),
+    SaveJson,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Display, Copy, PartialEq, Eq, Hash)]
@@ -22,4 +23,5 @@ pub enum StatEnum {
     Cool,
     Attractiveness,
     Empathy,
+    SpecialAbility,
 }
