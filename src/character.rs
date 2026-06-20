@@ -8,29 +8,30 @@ use crate::{
     weapons::Weapon,
 };
 
-use std::collections::HashMap;
+use std::{collections::HashMap, io::Read};
+//move to helper function file
 
-fn skill_map(skills: &[&str], governing_stat: StatEnum) -> HashMap<String, Vec<Modifier>> {
-    skills
-        .iter()
-        .map(|skill| {
-            (
-                skill.to_string(),
-                vec![
-                    Modifier::skill_points(),
-                    Modifier::stat_bonus(governing_stat),
-                ],
-            )
-        })
-        .collect()
-}
+// fn skill_map(skills: &[&str], governing_stat: StatEnum) -> HashMap<String, Vec<Modifier>> {
+//     skills
+//         .iter()
+//         .map(|skill| {
+//             (
+//                 skill.to_string(),
+//                 vec![
+//                     Modifier::skill_points(),
+//                     Modifier::stat_bonus(governing_stat),
+//                 ],
+//             )
+//         })
+//         .collect()
+// }
 
-fn ability_map(abilities: &[&str]) -> HashMap<String, Vec<Modifier>> {
-    abilities
-        .iter()
-        .map(|ability| (ability.to_string(), vec![Modifier::skill_points()]))
-        .collect()
-}
+// fn ability_map(abilities: &[&str]) -> HashMap<String, Vec<Modifier>> {
+//     abilities
+//         .iter()
+//         .map(|ability| (ability.to_string(), vec![Modifier::skill_points()]))
+//         .collect()
+// }
 
 #[derive(Default, Serialize, Deserialize)]
 pub struct Character {
@@ -100,166 +101,13 @@ impl Character {
         }
     }
 
-    pub fn new(name: String, points: isize) -> Self {
-        let mut skills = HashMap::new();
-
-        skills.insert(
-            StatEnum::SpecialAbility,
-            ability_map(&[
-                "Authority",
-                "Charismatic Leadership",
-                "Combat Sense",
-                "Credibility",
-                "Family",
-                "Interface",
-                "Jury Rig",
-                "Medical Tech",
-                "Resources",
-                "Streetdeal",
-            ]),
-        );
-
-        skills.insert(
-            StatEnum::Attractiveness,
-            skill_map(
-                &["Personal Grooming", "Wardrobe & Style"],
-                StatEnum::Attractiveness,
-            ),
-        );
-
-        skills.insert(
-            StatEnum::Body,
-            skill_map(&["Endurance", "Strength Feat", "Swimming"], StatEnum::Body),
-        );
-
-        skills.insert(
-            StatEnum::Cool,
-            skill_map(
-                &[
-                    "Interrogation",
-                    "Intimidate",
-                    "Oratory",
-                    "Resist Torture/Drugs",
-                    "Streetwise",
-                ],
-                StatEnum::Cool,
-            ),
-        );
-
-        skills.insert(
-            StatEnum::Empathy,
-            skill_map(
-                &[
-                    "Human Perception",
-                    "Interview",
-                    "Leadership",
-                    "Seduction",
-                    "Social",
-                    "Persuasion & Fast Talk",
-                    "Perform",
-                ],
-                StatEnum::Empathy,
-            ),
-        );
-
-        skills.insert(
-            StatEnum::Intelligence,
-            skill_map(
-                &[
-                    "Accounting",
-                    "Anthropology",
-                    "Awareness/Notice",
-                    "Biology",
-                    "Botany",
-                    "Chemistry",
-                    "Composition",
-                    "Diagnose Illness",
-                    "Education & Gen. Know",
-                    "Gamble",
-                    "Geology",
-                    "Hide/Evade",
-                    "History",
-                    "Library Search",
-                    "Mathematics",
-                    "Physics",
-                    "Programming",
-                    "Shadow/Track",
-                    "Stock Market",
-                    "System Knowledge",
-                    "Teaching",
-                    "Wilderness Survival",
-                    "Zoology",
-                ],
-                StatEnum::Intelligence,
-            ),
-        );
-
-        skills.insert(
-            StatEnum::Reflex,
-            skill_map(
-                &[
-                    "Archery",
-                    "Athletics",
-                    "Brawling",
-                    "Dance",
-                    "Dodge & Escape",
-                    "Driving",
-                    "Fencing",
-                    "Handgun",
-                    "Heavy Weapons",
-                    "Melee",
-                    "Motorcycle",
-                    "Operate Hvy. Machinery",
-                    "Pilot (Gyro)",
-                    "Pilot (Fixed Wing)",
-                    "Pilot (Dirigible)",
-                    "Pilot (Vect. Thrust Vehicle)",
-                    "Rifle",
-                    "Stealth",
-                    "Submachinegun",
-                ],
-                StatEnum::Reflex,
-            ),
-        );
-
-        skills.insert(
-            StatEnum::Tech,
-            skill_map(
-                &[
-                    "Aero Tech",
-                    "AV Tech",
-                    "Basic Tech",
-                    "Cryotank Operation",
-                    "Cyberdeck Design",
-                    "CyberTech",
-                    "Demolitions",
-                    "Disguise",
-                    "Electronics",
-                    "Elect. Security",
-                    "First Aid",
-                    "Forgery",
-                    "Gyro Tech",
-                    "Paint or Draw",
-                    "Photo & Film",
-                    "Pharmaceuticals",
-                    "Pick Lock",
-                    "Pick Pocket",
-                    "Play Instrument",
-                    "Weaponsmith",
-                ],
-                StatEnum::Tech,
-            ),
-        );
-
-        Self {
-            handle: name,
-            role: None,
-            character_points: points,
-            stats: Stats::new(points),
-            skills,
-            gear: vec![],
-            weapons: vec![],
-        }
+    pub fn new(name: String, points: isize, mut json: std::fs::File) -> Self {
+        let mut file = String::new();
+        json.read_to_string(&mut file).expect("failed to read file");
+        let mut temp: Character = serde_json::from_str(&file).expect("Invalid json");
+        temp.handle = name;
+        temp.character_points = points;
+        temp
     }
 }
 #[derive(Serialize, Deserialize)]

@@ -4,27 +4,68 @@ use charecter_gen_2020::character::Character;
 use charecter_gen_2020::graphics::messages::{self, Message, StatEnum};
 use iced::widget::{Column, Container, button, column, row, text, text_input};
 use iced::{self, Element};
+use rfd;
 use serde_json::value::Serializer;
-
+enum AppState {
+    Prompt,
+    Loaded,
+}
 struct App {
+    state: AppState,
     character: Character,
 }
 
 impl App {
     fn new() -> Self {
         Self {
-            character: Character::new("Jane Doe".to_string(), 0),
+            state: AppState::Prompt,
+            character: Character::default(),
         }
     }
 
     fn update(&mut self, message: Message) {
         match message {
+            Message::NewCharacter => {
+                let mut file = fs::File::open("new_character.json").expect("failed to open file");
+                self.load_char(file);
+                self.state = AppState::Loaded;
+            }
+            Message::LoadCharacter => {
+                if let Some(path) = rfd::FileDialog::new()
+                    .add_filter("json", &["json"])
+                    .pick_file()
+                {
+                    if let Ok(json_str) = fs::read_to_string(&path) {
+                        if let Ok(character) = serde_json::from_str(&json_str) {
+                            self.character = character;
+                            self.state = AppState::Loaded;
+                        }
+                    }
+                }
+            }
             Message::SaveJson => saveFile(&self.character),
             _ => self.character.update(message),
         }
     }
+    fn prompt_view(&self) -> Element<Message> {
+        column![
+            button("New Character").on_press(Message::NewCharacter),
+            button("Load Character").on_press(Message::LoadCharacter),
+        ]
+        .spacing(20)
+        .into()
+    }
 
     fn view(&self) -> Element<Message> {
+        match self.state {
+            AppState::Prompt => self.prompt_view(),
+            AppState::Loaded => self.normal_view(),
+        }
+    }
+    fn load_char(&mut self, json: fs::File) {
+        self.character = Character::new("Jane_doe".to_string(), 70, json);
+    }
+    fn normal_view(&self) -> Element<Message> {
         let skills: Column<Message> = self
             .character
             .skills

@@ -1,0 +1,1392 @@
+{
+  "handle": "jane_doe",
+  "role": null,
+  "character_points": 0,
+  "stats": {
+    "below_two": false,
+    "unused_points": 0,
+    "intelligence": 0,
+    "reflex": 0,
+    "tech": 0,
+    "cool": 0,
+    "attractiveness": 0,
+    "luck": 0,
+    "movement_allowance": 0,
+    "body": 0,
+    "empathy": 0
+  },
+  "skills": {
+    "SpecialAbility": {
+      "Interface": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Charismatic Leadership": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Combat Sense": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Streetdeal": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Family": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Medical Tech": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Credibility": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Jury Rig": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Resources": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ],
+      "Authority": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        }
+      ]
+    },
+    "Tech": {
+      "CyberTech": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Basic Tech": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Cryotank Operation": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Forgery": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Electronics": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "First Aid": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Paint or Draw": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Demolitions": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Photo & Film": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Elect. Security": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Play Instrument": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Gyro Tech": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Pick Lock": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Cyberdeck Design": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "AV Tech": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Disguise": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Pharmaceuticals": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Weaponsmith": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Pick Pocket": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ],
+      "Aero Tech": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Tech",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Tech"
+        }
+      ]
+    },
+    "Empathy": {
+      "Human Perception": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ],
+      "Interview": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ],
+      "Leadership": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ],
+      "Seduction": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ],
+      "Social": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ],
+      "Persuasion & Fast Talk": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ],
+      "Perform": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Empathy",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Empathy"
+        }
+      ]
+    },
+    "Reflex": {
+      "Operate Hvy. Machinery": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Submachinegun": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Motorcycle": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Pilot (Vect. Thrust Vehicle)": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Dodge & Escape": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Stealth": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Athletics": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Pilot (Fixed Wing)": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Brawling": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Archery": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Pilot (Gyro)": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Fencing": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Pilot (Dirigible)": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Heavy Weapons": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Rifle": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Dance": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Driving": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Melee": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ],
+      "Handgun": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Reflex",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Reflex"
+        }
+      ]
+    },
+    "Attractiveness": {
+      "Personal Grooming": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Attractiveness",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Attractiveness"
+        }
+      ],
+      "Wardrobe & Style": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Attractiveness",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Attractiveness"
+        }
+      ]
+    },
+    "Body": {
+      "Strength Feat": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Body",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Body"
+        }
+      ],
+      "Swimming": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Body",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Body"
+        }
+      ],
+      "Endurance": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Body",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Body"
+        }
+      ]
+    },
+    "Cool": {
+      "Intimidate": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Cool",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Cool"
+        }
+      ],
+      "Oratory": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Cool",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Cool"
+        }
+      ],
+      "Resist Torture/Drugs": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Cool",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Cool"
+        }
+      ],
+      "Interrogation": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Cool",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Cool"
+        }
+      ],
+      "Streetwise": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Cool",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Cool"
+        }
+      ]
+    },
+    "Intelligence": {
+      "Programming": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Diagnose Illness": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Library Search": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Mathematics": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Education & Gen. Know": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Shadow/Track": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Wilderness Survival": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Zoology": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Geology": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Awareness/Notice": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "History": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Accounting": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Composition": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Physics": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "System Knowledge": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Gamble": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Chemistry": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Biology": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Hide/Evade": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Anthropology": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Botany": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Stock Market": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ],
+      "Teaching": [
+        {
+          "stat": null,
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Skill points"
+        },
+        {
+          "stat": "Intelligence",
+          "skill": null,
+          "modifier": 0,
+          "has_condition": false,
+          "origin": "Intelligence"
+        }
+      ]
+    }
+  },
+  "gear": [],
+  "weapons": []
+}

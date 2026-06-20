@@ -10,6 +10,8 @@ pub enum Message {
     SkillDecreased(String, StatEnum),
     SkillIncreased(String, StatEnum),
     SaveJson,
+    NewCharacter,
+    LoadCharacter,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, Display, Copy, PartialEq, Eq, Hash)]
