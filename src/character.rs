@@ -38,7 +38,7 @@ pub struct Character {
     handle: String,
     role: Option<Role>,
     pub character_points: isize,
-    stats: Stats,
+    pub stats: Stats,
     pub skills: HashMap<StatEnum, HashMap<String, Vec<Modifier>>>,
     pub gear: Vec<gear::Gear>,
     pub weapons: Vec<Weapon>,
@@ -54,47 +54,14 @@ impl Character {
                 *self.stats.get_mut(stat) -= 1;
             }
             Message::SkillIncreased(skill, stat) => {
-                if let Some(stat_map) = self.skills.get_mut(&stat) {
-                    if let Some(modifiers) = stat_map.get_mut(&skill) {
-                        modifiers
-                            .iter_mut()
-                            .filter(|x| x.origin == "Skill points")
-                            .for_each(|x| x.modifier += 1);
-                    } else {
-                        eprintln!("skill not found: {}", skill);
-                    }
-                } else {
-                    eprintln!("stat not found");
-                }
+                self.skill_inc_helper(&skill, stat, 1);
             }
             Message::SkillDecreased(skill, stat) => {
-                if let Some(stat_map) = self.skills.get_mut(&stat) {
-                    if let Some(modifiers) = stat_map.get_mut(&skill) {
-                        modifiers
-                            .iter_mut()
-                            .filter(|x| x.origin == "Skill points")
-                            .for_each(|x| x.modifier -= 1);
-                    } else {
-                        eprintln!("skill not found: {}", skill);
-                    }
-                } else {
-                    eprintln!("stat not found");
-                }
+                self.skill_inc_helper(&skill, stat, -1);
             }
             Message::SetSkill(skill, stat, value) => {
                 if let Ok(parsed) = value.parse::<isize>() {
-                    if let Some(stat_map) = self.skills.get_mut(&stat) {
-                        if let Some(modifiers) = stat_map.get_mut(&skill) {
-                            modifiers
-                                .iter_mut()
-                                .filter(|x| x.origin == "Skill points")
-                                .for_each(|x| x.modifier = parsed);
-                        } else {
-                            eprintln!("skill not found: {}", skill);
-                        }
-                    } else {
-                        eprintln!("stat not found");
-                    }
+                    self.set_skill(&skill, stat, parsed);
                 }
             }
             _ => {}
@@ -108,6 +75,36 @@ impl Character {
         temp.handle = name;
         temp.character_points = points;
         temp
+    }
+    // helper function of augmenting skill points by 1
+    fn skill_inc_helper(&mut self, skill: &str, stat: StatEnum, value: isize) {
+        if let Some(stat_map) = self.skills.get_mut(&stat) {
+            if let Some(modifiers) = stat_map.get_mut(skill) {
+                modifiers
+                    .iter_mut()
+                    .filter(|x| x.origin == "Skill points")
+                    .for_each(|x| x.modifier += value);
+            } else {
+                eprintln!("skill not found: {}", skill);
+            }
+        } else {
+            eprintln!("stat not found");
+        }
+    }
+    //internal setter
+    fn set_skill(&mut self, skill: &str, stat: StatEnum, value: isize) {
+        if let Some(stat_map) = self.skills.get_mut(&stat) {
+            if let Some(modifiers) = stat_map.get_mut(skill) {
+                modifiers
+                    .iter_mut()
+                    .filter(|x| x.origin == "Skill points")
+                    .for_each(|x| x.modifier = value);
+            } else {
+                eprintln!("skill not found: {}", skill);
+            }
+        } else {
+            eprintln!("stat not found");
+        }
     }
 }
 #[derive(Serialize, Deserialize)]

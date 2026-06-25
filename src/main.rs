@@ -95,13 +95,13 @@ impl App {
         const CONTAINER_HEIGHT: f32 = 500.0;
 
         let mono = |s: String| text(s).font(Font::MONOSPACE);
-
-        let mut stats: Vec<_> = self.character.skills.iter().collect();
-        stats.sort_by_key(|(stat, _)| format!("{:?}", stat));
+        let stats = self.character.stats.get_stats();
+        let mut skill_group: Vec<_> = self.character.skills.iter().collect();
+        skill_group.sort_by_key(|(stat, _)| format!("{:?}", stat));
 
         let mut flat_items: Vec<Element<Message>> = Vec::new();
 
-        for (stat, skill_map) in stats {
+        for (stat, skill_map) in skill_group {
             flat_items.push(mono(format!("[{:?}]", stat)).size(20).into());
 
             let mut skills: Vec<_> = skill_map.iter().collect();

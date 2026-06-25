@@ -48,4 +48,17 @@ impl Stats {
             _ => &mut self.intelligence,
         }
     }
+    pub fn get_stats(&self) -> Vec<(&str, isize)> {
+        vec![
+            ("Intelligence", self.intelligence),
+            ("Reflex", self.reflex),
+            ("Tech", self.tech),
+            ("Cool", self.cool),
+            ("Attractiveness", self.attractiveness),
+            ("Luck", self.luck),
+            ("Movement", self.movement_allowance),
+            ("Body", self.body),
+            ("Empathy", self.empathy),
+        ]
+    }
 }
